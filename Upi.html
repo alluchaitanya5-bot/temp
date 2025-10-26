@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UPI Payment - Chinni Snacks</title>
+<style>
+body { font-family: Arial, sans-serif; padding:20px; background:#fff5e6;}
+header { text-align:center; background:orange; color:white; padding:15px; border-radius:6px; margin-bottom:20px;}
+#upi-qr { text-align:center; margin-top:30px;}
+#upi-qr img { width:200px; height:200px; }
+button { padding:10px 15px; border:none; border-radius:6px; background:orange; color:white; cursor:pointer; margin-top:20px;}
+button:hover { background:darkorange; }
+#status { text-align:center; font-weight:bold; margin-top:15px; display:none;}
+</style>
+</head>
+<body>
+
+<header>Chinni Snacks - UPI Payment</header>
+
+<div id="upi-qr">
+  <p>Scan this QR to pay via UPI:</p>
+  <img src="images/upi-qr.png" alt="UPI QR Code">
+  <br>
+  <button onclick="simulateUPIPayment()">Simulate Payment</button>
+</div>
+
+<div id="status"></div>
+
+<script>
+function simulateUPIPayment(){
+  const status = document.getElementById('status');
+  status.style.display = "block";
+  const success = Math.random() < 0.7;
+  if(success){
+    status.innerText = "✅ Payment Successful!";
+    status.style.color = "green";
+    setTimeout(()=>{
+      alert("Payment Completed! Redirecting to homepage.");
+      localStorage.removeItem('cart');
+      window.location.href="index.html";
+    },1000);
+  } else {
+    status.innerText = "❌ Payment Failed! Try again.";
+    status.style.color = "red";
+  }
+}
+</script>
+
+</body>
+</html>

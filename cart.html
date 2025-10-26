@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cart - Chinni Snacks</title>
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/cart.css">
+</head>
+<body>
+
+<header>
+  <h2>My Cart 🛒</h2>
+</header>
+
+<div id="cart-container"></div>
+
+<div id="grand-total"></div>
+
+<button class="clear-cart" onclick="clearCart()">Clear Cart</button>
+
+<button class="back-btn" onclick="goBack()">← Back to Shop</button>
+
+<button class="proceed-btn" onclick="goToPayment()">Proceed to Payment 💳</button>
+
+
+<script>
+// Sample image mapping (use your image file paths)
+const imageMap = {
+  "Bellam Gavvalu": "images/bellam-gavvalu-recipe-445_720x.webp",
+  "Laddu": "images/Motichoor_ladoo.webp",
+  "Kajjikayalu": "images/kajjikayalu-crispy-coconut-gujiyakaranji-221_250x.avif",
+  "Ariselu": "images/Ariselu.webp",
+  "Kaja": "images/kaja.webp",
+  "Murukulu": "images/murukulu.webp",
+  "Chekkalu": "images/chekkalu.webp",
+  "Mixture": "images/mixture.webp",
+  "Jantikalu": "images/jantikalu.webp",
+  "Karasev": "images/karasev.webp",
+  "Mango Pickle": "images/mango-pickle.webp",
+  "Lime Pickle": "images/lime-pickle.webp",
+  "Garlic Pickle": "images/garlic-pickle.webp"
+};
+
+function loadCart() {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const container = document.getElementById('cart-container');
+  container.innerHTML = '';
+  let grandTotal = 0;
+
+  cart.forEach((item, index) => {
+    const total = item.price * item.quantity;
+    grandTotal += total;
+
+    const div = document.createElement('div');
+    div.className = 'cart-item';
+    div.innerHTML = `
+      <img src="${imageMap[item.name]}" alt="${item.name}">
+      <div class="cart-details">
+        <h3>${item.name}</h3>
+        <p>Price: ₹${item.price}</p>
+        <div class="quantity-control">
+          <button onclick="decreaseQty(${index})">−</button>
+          <span id="qty-${index}">${item.quantity}</span>
+          <button onclick="increaseQty(${index})">+</button>
+          <span class="total-price">Total: ₹<span id="total-${index}">${total}</span></span>
+        </div>
+      </div>
+    `;
+    container.appendChild(div);
+  });
+
+  document.getElementById('grand-total').innerText = `Grand Total: ₹${grandTotal}`;
+}
+
+function increaseQty(index) {
+  let cart = JSON.parse(localStorage.getItem('cart'));
+  cart[index].quantity++;
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartDisplay();
+}
+
+function decreaseQty(index) {
+  let cart = JSON.parse(localStorage.getItem('cart'));
+  if(cart[index].quantity > 1) {
+    cart[index].quantity--;
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartDisplay();
+  }
+}
+
+function updateCartDisplay() {
+  loadCart();
+}
+
+function goBack() {
+  window.location.href = "new_test.html"; // Replace with your main page filename
+}
+
+function clearCart() {
+  localStorage.removeItem('cart');
+  loadCart();
+}
+
+// Initial load
+loadCart();
+
+
+function goToPayment() {
+  // Optional: Check if cart is empty
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  if(cart.length === 0){
+    alert("Your cart is empty!");
+    return;
+  }
+  // Redirect to payment page
+  window.location.href = "payment.html";
+}
+
+
+</script>
+
+</body>
+</html>

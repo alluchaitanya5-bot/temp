@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chinni Snacks</title>
+<link rel="stylesheet" href="css/styles.css">
+<style>
+/* Minimal overrides */
+.quantity-control {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 5px;
+  gap: 10px;
+}
+.quantity-control button {
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  border: none;
+  background: orange;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+.quantity-control button:hover {
+  background: darkorange;
+}
+.qty {
+  min-width: 20px;
+  text-align: center;
+  display: inline-block;
+  font-weight: bold;
+}
+button.add-cart {
+  margin-top: 5px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: none;
+  background: orange;
+  color: white;
+}
+button.add-cart:hover {
+  background: darkorange;
+}
+</style>
+</head>
+<body>
+
+<header>Chinni Snacks</header>
+
+<nav>
+   <a href="#home">Home</a>
+  <a href="#sweets">Sweets</a>
+  <a href="#snacks">Snacks</a>
+  <a href="#pickles">Pickles</a>
+  <a href="cart.html">Cart 🛒</a>
+</nav>
+
+<main>
+  <!-- SWEETS SECTION -->
+  <h2 id="sweets">Our Sweet Collection 🍬</h2>
+  <p>Explore our traditional sweets made with love and authentic ingredients!</p>
+
+  <section>
+    <div class="item">
+      <img src="images/bellam-gavvalu-recipe-445_720x.webp" alt="Bellam Gavvalu">
+      <h3>Bellam Gavvalu</h3>
+      <p>Price: ₹160</p>
+      <div class="quantity-control">
+        <button onclick="decreaseQty(this)">−</button>
+        <span class="qty">1</span>
+        <button onclick="increaseQty(this)">+</button>
+      </div>
+      <button class="add-cart" onclick="addToCart('Bellam Gavvalu', 160, this)">Add to Cart</button>
+    </div>
+
+    <div class="item">
+      <img src="images/Motichoor_ladoo.webp" alt="Laddu">
+      <h3>Laddu</h3>
+      <p>Price: ₹120</p>
+      <div class="quantity-control">
+        <button onclick="decreaseQty(this)">−</button>
+        <span class="qty">1</span>
+        <button onclick="increaseQty(this)">+</button>
+      </div>
+      <button class="add-cart" onclick="addToCart('Laddu', 120, this)">Add to Cart</button>
+    </div>
+
+    <div class="item">
+      <img src="images/kajjikayalu-crispy-coconut-gujiyakaranji-221_250x.avif" alt="Kajjikayalu">
+      <h3>Kajjikayalu</h3>
+      <p>Price: ₹180</p>
+      <div class="quantity-control">
+        <button onclick="decreaseQty(this)">−</button>
+        <span class="qty">1</span>
+        <button onclick="increaseQty(this)">+</button>
+      </div>
+      <button class="add-cart" onclick="addToCart('Kajjikayalu', 180, this)">Add to Cart</button>
+    </div>
+
+    <div class="item">
+      <img src="images/Ariselu.webp" alt="Ariselu">
+      <h3>Ariselu</h3>
+      <p>Price: ₹180</p>
+      <div class="quantity-control">
+        <button onclick="decreaseQty(this)">−</button>
+        <span class="qty">1</span>
+        <button onclick="increaseQty(this)">+</button>
+      </div>
+      <button class="add-cart" onclick="addToCart('Ariselu', 180, this)">Add to Cart</button>
+    </div>
+
+    <div class="item">
+      <img src="images/kaja.webp" alt="Kaja">
+      <h3>Kaja</h3>
+      <p>Price: ₹180</p>
+      <div class="quantity-control">
+        <button onclick="decreaseQty(this)">−</button>
+        <span class="qty">1</span>
+        <button onclick="increaseQty(this)">+</button>
+      </div>
+      <button class="add-cart" onclick="addToCart('Kaja', 180, this)">Add to Cart</button>
+    </div>
+  </section>
+
+  <hr>
+
+  <!-- SNACKS SECTION -->
+  <h2 id="snacks">Hot & Crispy Snacks 🍘</h2>
+  <p>Enjoy our crunchy, spicy, and fresh traditional South Indian snacks!</p>
+
+  <section>
+    <div class="item">
+      <img src="images/murukulu.webp" alt="Murukulu">
+      <h3>Murukulu</h3>
+      <p>Price: ₹150</p>
+      <div class="quantity-control">
+        <button onclick="decreaseQty(this)">−</button>
+        <span class="qty">1</span>
+        <button onclick="increaseQty(this)">+</button>
+      </div>
+      <button class="add-cart" onclick="addToCart('Murukulu', 150, this)">Add to Cart</button>
+    </div>
+
+    <div class="item">
+      <img src="images/chekkalu.webp" alt="Chekkalu">
+      <h3>Chekkalu</h3>
+      <p>Price: ₹130</p>
+      <div class="quantity-control">
+        <button onclick="decreaseQty(this)">−</button>
+        <span class="qty">1</span>
+        <button onclick="increaseQty(this)">+</button>
+      </div>
+      <button class="add-cart" onclick="addToCart('Chekkalu', 130, this)">Add to Cart</button>
+    </div>
+
+    <div class="item">
+      <img src="images/mixture.webp" alt="Mixture">
+      <h3>Mixture</h3>
+      <p>Price: ₹160</p>
+      <div class="quantity-control">
+        <button onclick="decreaseQty(this)">−</button>
+        <span class="qty">1</span>
+        <button onclick="increaseQty(this)">+</button>
+      </div>
+      <button class="add-cart" onclick="addToCart('Mixture', 160, this)">Add to Cart</button>
+    </div>
+
+    <div class="item">
+      <img src="images/jantikalu.webp" alt="Jantikalu">
+      <h3>Jantikalu</h3>
+      <p>Price: ₹140</p>
+      <div class="quantity-control">
+        <button onclick="decreaseQty(this)">−</button>
+        <span class="qty">1</span>
+        <button onclick="increaseQty(this)">+</button>
+      </div>
+      <button class="add-cart" onclick="addToCart('Jantikalu', 140, this)">Add to Cart</button>
+    </div>
+
+    <div class="item">
+      <img src="images/karasev.webp" alt="Karasev">
+      <h3>Karasev</h3>
+      <p>Price: ₹180</p>
+      <div class="quantity-control">
+        <button onclick="decreaseQty(this)">−</button>
+        <span class="qty">1</span>
+        <button onclick="increaseQty(this)">+</button>
+      </div>
+      <button class="add-cart" onclick="addToCart('Karasev', 180, this)">Add to Cart</button>
+    </div>
+  </section>
+
+<hr>
+
+<h2 id="pickles">Pickles & Condiments 🥒</h2>
+<p>Enjoy our traditional pickles made with fresh ingredients and authentic flavors!</p>
+
+<section>
+  <div class="item">
+    <img src="images/mango-pickle.webp" alt="Mango Pickle">
+    <h3>Mango Pickle</h3>
+    <p>Price: ₹120</p>
+    <div class="quantity-control">
+      <button onclick="decreaseQty(this)">−</button>
+      <span class="qty">1</span>
+      <button onclick="increaseQty(this)">+</button>
+    </div>
+    <button class="add-cart" onclick="addToCart('Mango Pickle', 120, this)">Add to Cart</button>
+  </div>
+
+  <div class="item">
+    <img src="images/lime-pickle.webp" alt="Lime Pickle">
+    <h3>Lime Pickle</h3>
+    <p>Price: ₹100</p>
+    <div class="quantity-control">
+      <button onclick="decreaseQty(this)">−</button>
+      <span class="qty">1</span>
+      <button onclick="increaseQty(this)">+</button>
+    </div>
+    <button class="add-cart" onclick="addToCart('Lime Pickle', 100, this)">Add to Cart</button>
+  </div>
+
+  <div class="item">
+    <img src="images/garlic-pickle.webp" alt="Garlic Pickle">
+    <h3>Garlic Pickle</h3>
+    <p>Price: ₹130</p>
+    <div class="quantity-control">
+      <button onclick="decreaseQty(this)">−</button>
+      <span class="qty">1</span>
+      <button onclick="increaseQty(this)">+</button>
+    </div>
+    <button class="add-cart" onclick="addToCart('Garlic Pickle', 130, this)">Add to Cart</button>
+  </div>
+</section>
+
+
+
+
+</main>
+
+<script>
+function increaseQty(btn) {
+  const qtySpan = btn.parentElement.querySelector('.qty');
+  qtySpan.innerText = parseInt(qtySpan.innerText) + 1;
+}
+
+function decreaseQty(btn) {
+  const qtySpan = btn.parentElement.querySelector('.qty');
+  if (parseInt(qtySpan.innerText) > 1) {
+    qtySpan.innerText = parseInt(qtySpan.innerText) - 1;
+  }
+}
+
+function addToCart(name, price, btn) {
+  const itemDiv = btn.parentElement;
+  const qty = parseInt(itemDiv.querySelector('.qty').innerText);
+
+  if(qty > 0) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push({name: name, price: price, quantity: qty});
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(name + ' added to cart (' + qty + ')');
+  }
+}
+</script>
+
+</body>
+</html>

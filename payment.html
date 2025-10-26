@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment - Chinni Snacks</title>
+<link rel="stylesheet" href="css/styles.css">
+<style>
+body { font-family: Arial, sans-serif; padding: 20px; background: #fff5e6; }
+header { text-align: center; background: orange; color: white; padding: 15px; font-size: 2em; border-radius: 6px; margin-bottom: 20px; }
+form { max-width: 500px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 10px; box-shadow: 2px 2px 10px rgba(0,0,0,0.1);}
+form h2 { text-align: center; margin-bottom: 20px; }
+label { display: block; margin: 10px 0 5px; font-weight: bold; }
+input, select, textarea { width: 100%; padding: 10px; margin-bottom: 10px; border-radius: 6px; border: 1px solid #ccc; box-sizing: border-box; }
+button { width: 100%; padding: 12px; background: orange; color: white; border: none; border-radius: 6px; font-size: 1em; cursor: pointer; margin-top: 10px;}
+button:hover { background: darkorange; }
+.cart-summary { margin-bottom: 20px; border: 1px solid #ddd; padding: 10px; border-radius: 6px; background: #fff5e6; }
+.cart-summary h3 { margin-top: 0; }
+.cart-summary p { margin: 5px 0; }
+</style>
+</head>
+<body>
+
+<header>Chinni Snacks - Payment</header>
+
+<!-- Optional Cart Summary -->
+<div class="cart-summary" id="cart-summary">
+  <h3>Cart Summary</h3>
+  <div id="cart-items"></div>
+  <p id="grand-total">Grand Total: ₹0</p>
+</div>
+
+<form onsubmit="processPayment(event)">
+  <h2>Payment Details</h2>
+
+  <label for="name">Full Name</label>
+  <input type="text" id="name" required>
+
+  <label for="email">Email</label>
+  <input type="email" id="email" required>
+
+  <label for="phone">Phone Number</label>
+  <input type="tel" id="phone" required>
+
+  <label for="address">Delivery Address</label>
+  <textarea id="address" rows="3" required></textarea>
+
+  <label for="payment">Payment Method</label>
+  <select id="payment" required>
+    <option value="">Select Payment Method</option>
+    <option value="card">Credit/Debit Card</option>
+    <option value="upi">UPI</option>
+    <option value="cod">Cash on Delivery</option>
+  </select>
+
+  <button type="submit">Pay Now</button>
+</form>
+
+<script>
+// Display cart summary
+function loadCartSummary() {
+  let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  const container = document.getElementById('cart-items');
+  container.innerHTML = '';
+  let grandTotal = 0;
+
+  cart.forEach(item => {
+    const total = item.price * item.quantity;
+    grandTotal += total;
+    const div = document.createElement('div');
+    div.innerHTML = `${item.name} x ${item.quantity} = ₹${total}`;
+    container.appendChild(div);
+  });
+
+  document.getElementById('grand-total').innerText = `Grand Total: ₹${grandTotal}`;
+}
+
+function processPayment(event){
+  event.preventDefault();
+  const paymentMethod = document.getElementById('payment').value;
+  if(paymentMethod === 'upi'){
+    // Redirect to UPI page
+    window.location.href = "upi.html";
+    return;
+  } 
+  // For card or COD
+  alert("Payment successful! Thank you for shopping.");
+  localStorage.removeItem('cart');
+  window.location.href = "index.html";
+}
+
+
+// Initial load
+loadCartSummary();
+</script>
+
+</body>
+</html>
